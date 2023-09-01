@@ -1,8 +1,8 @@
-#!/work/tc046/tc046/s2252632/myvenv/bin/python
+#!
 ### FUNCTIONS ###
 
 def picklines(thefile, whatlines):
-    """ 
+    """
     INPUT: An open file-like object and a sorted list of zero-based line indices (whatlines)
     OUTPUT: A list, with low memory footprint and reasonable speed.
     """
@@ -18,18 +18,23 @@ total_parts = 1
 
 for i in range(1, total_parts + 1):
     num = str(i).zfill(2)
-    
-    # original alignment files
-    # alignment_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/alignment_files/aligned_{num}_raw.txt"
-    
-    # modified many to one
-    alignment_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/manytoone_aligns/aligned_01_raw.txt"
-    # alignment_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/manytoone_aligns_ogtiboverlap/aligned_{num}_raw.txt"
 
-    sl_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/BO_{book}_{num}"
-    tl_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/ENG_sentences/ENG_{book}_{num}"
-    source_aligned_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/manytoone_aligned/BO_{book}_al_{num}.txt"
-    target_aligned_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/manytoone_aligned/ENG_{book}_al_{num}.txt"
+    # original alignment files
+    # alignment_file = ADD FILEPATH
+
+    # modified many to one
+    alignment_file = #ADD MANYTOONE ALIGNMENT FILEPATH - e.g.:
+    # alignment_file = f"./vecalign/{book}_src/manytoone_aligns_ogtiboverlap/aligned_{num}_raw.txt"
+
+    # modify below filepaths:
+    # the preprocessed/cleaned source language text filepath:
+    sl_file = #ADD: e.g. f"./vecalign/{book}_src/BO_{book}_{num}"
+    # the preprocessed/cleaned target language text filepath:
+    tl_file = #ADD: e.g. f"./vecalign/{book}_src/ENG_sentences/ENG_{book}_{num}"
+
+    # OUTPUT filepaths:
+    source_aligned_file = #ADD: e.g. f"./vecalign/{book}_src/manytoone_aligned/BO_{book}_al_{num}.txt"
+    target_aligned_file = #ADD: e.g. f"./vecalign/{book}_src/manytoone_aligned/ENG_{book}_al_{num}.txt"
 
     ### CODE ###
 

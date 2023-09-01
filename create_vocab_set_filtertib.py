@@ -1,9 +1,11 @@
 """
 Create vocab set by iterating through each dictionary entry and see if it can be found in the English text file. If found, keep in dict. If not found, eliminate from dict. Create a new dict object and pickle it rather than overwriting the original dict file.
 
-Do this rather than creating a vocab set from English text then eliminating dictionary entries using the set as dict entries can span multiple words so you'd have to do a sliding window across the entire English text to create a vocab inventory. 
+Do this rather than creating a vocab set from English text then eliminating dictionary entries using the set as dict entries can span multiple words so you'd have to do a sliding window across the entire English text to create a vocab inventory.
 
 Write to deal with a single chapter/text segment (.EOA-separated) then expand code to iterate through all.
+
+Modify filepaths before running.
 """
 import pickle
 import string
@@ -17,25 +19,25 @@ total_parts = 1
 # upper range limit should be 1 above actual number of parts
 for filenum in range(1, total_parts+1):
     filenum = str(filenum).zfill(2)
-    
+
     print(f"BOOK: {bookname}")
     print(f"PART {filenum}")
-    
-    # Tibetan novel .txt file path (not combinations, strict Tib sentences)
-    tib_data_path = f"/work/tc046/tc046/s2252632/vecalign/{bookname}_src/BO_{bookname}_{filenum}"
 
-    valby_dict_path = "/work/tc046/tc046/s2252632/dict_transl/jimvalby_dict.pickle"
-    hopkins_dict_path = "/work/tc046/tc046/s2252632/dict_transl/hopkins_dict.pickle"
-    ives_dict_path = "/work/tc046/tc046/s2252632/dict_transl/ives_dict.pickle"
+    # Tibetan novel .txt file path (not combinations, strict Tib sentences)
+    tib_data_path = #ADD: e.g. f"./vecalign/{bookname}_src/BO_{bookname}_{filenum}"
+
+    valby_dict_path = #ADD: e.g. f"./dict_transl/jimvalby_dict.pickle"
+    hopkins_dict_path = #ADD: e.g. f"./dict_transl/hopkins_dict.pickle"
+    ives_dict_path = #ADD: e.g. f"./dict_transl/ives_dict.pickle"
 
     # top 500 English and Tibetan words frequency list filepath
-    top500en_path = "/work/tc046/tc046/s2252632/dict_transl/top500list_en.pickle" # list
-    top500bo_path = "/work/tc046/tc046/s2252632/dict_transl/top500bo.txt" # file - each line = a word
+    top500en_path = #ADD: e.g. f"./dict_transl/top500list_en.pickle" # list
+    top500bo_path = #ADD: e.g. f"./dict_transl/top500bo.txt" # file - each line = a word
 
     # Pickle outfile paths
-    valby_dict_outpath = f"/work/tc046/tc046/s2252632/dict_transl/{bookname}_dicts/tibfiltered/jimvalby_dict_{bookname}_{filenum}.pickle"
-    hopkins_dict_outpath = f"/work/tc046/tc046/s2252632/dict_transl/{bookname}_dicts/tibfiltered/hopkins_dict_{bookname}_{filenum}.pickle"
-    ives_dict_outpath = f"/work/tc046/tc046/s2252632/dict_transl/{bookname}_dicts/tibfiltered/ives_dict_{bookname}_{filenum}.pickle"
+    valby_dict_outpath = #ADD: e.g. f"./dict_transl/{bookname}_dicts/tibfiltered/jimvalby_dict_{bookname}_{filenum}.pickle"
+    hopkins_dict_outpath = #ADD: e.g. f"./dict_transl/{bookname}_dicts/tibfiltered/hopkins_dict_{bookname}_{filenum}.pickle"
+    ives_dict_outpath = #ADD: e.g. f"./dict_transl/{bookname}_dicts/tibfiltered/ives_dict_{bookname}_{filenum}.pickle"
 
     # instantiate Tib-->Wylie transliteration converter
     converter = pyewts.pyewts()
@@ -61,7 +63,7 @@ for filenum in range(1, total_parts+1):
     def is_partial_match(value, tib_text, threshold=0.8):
         """
         Helper function for use within word_in_dict. Ensures the term is in the Tibetan text. If 80% (e.g. threshold) of the dictionary value (consecutive characters) is in the Tibetan text (based on characters) then return True = match.
-        INPUT: Value(str)= the dict entry in Tibetan for a given Eng term. Tib_text(str)= sentence to cross-reference with. Threshold = the %  
+        INPUT: Value(str)= the dict entry in Tibetan for a given Eng term. Tib_text(str)= sentence to cross-reference with. Threshold = the %
         OUTPUT: True or False depending on whether deemed match or not.
         """
         value = converter.toUnicode(value)
@@ -105,7 +107,7 @@ for filenum in range(1, total_parts+1):
     with open(top500bo_path, 'r') as file:
         for line in file:
             line = line.strip()
-            # transliterate line 
+            # transliterate line
             line = converter.toWylie(line)
             top500bo.append(line)
 
@@ -172,7 +174,7 @@ for filenum in range(1, total_parts+1):
     print(len(dict_list[0]))
     print(len(dict_list[1]))
     print(len(dict_list[2]))
-    
+
     # One dict at a time...
     for dictionary in dict_list:
         # Create a new dictionary to store the filtered entries
@@ -207,7 +209,7 @@ for filenum in range(1, total_parts+1):
     #### Pickle new chapter/segment-specific dict object ####
 
     print("pickling new dicts")
-    pickle_object(valby_dict, valby_dict_outpath) 
+    pickle_object(valby_dict, valby_dict_outpath)
     pickle_object(hopkins_dict, hopkins_dict_outpath)
     pickle_object(ives_dict, ives_dict_outpath)
 

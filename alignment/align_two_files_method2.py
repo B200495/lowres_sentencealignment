@@ -1,8 +1,8 @@
-#!/work/tc046/tc046/s2252632/myvenv/bin/python
+#!
 ### FUNCTIONS ###
 
 def picklines(thefile, whatlines):
-    """ 
+    """
     INPUT: An open file-like object and a sorted list of zero-based line indices (whatlines)
     OUTPUT: A list, with low memory footprint and reasonable speed.
     """
@@ -19,19 +19,24 @@ total_lines = 223
 for i in range(0, total_lines + 1):
     # num = str(i).zfill(2)
     num = str(i)
-    
+
     # original alignment files
-    # alignment_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/alignment_files/aligned_{num}_raw.txt"
-    
-    # modified many to one
-    alignment_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/method2_alignmentfiles/aligned_01_line{num}_raw.txt"
+    # alignment_file = #ADD: e.g. f"./vecalign/{book}_src/alignment_files/aligned_{num}_raw.txt"
 
-    sl_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/BO_{book}_01"
-    tl_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/ENG_sentencessep_method2/ENG_{book}_01_line{num}"
-    # tl_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/ENG_sentences/ENG_{book}_{num}"
+    # modified many to one (filepath to the alignment indices file output by vecalign, restricted to many-to-one alignments)
+    # note that vecalign only allows many-to-one whereby many = target language and one = source language so order is reversed back to correct direction using this script.
+    alignment_file = #ADD: e.g. f"./vecalign/{book}_src/method2_alignmentfiles/aligned_01_line{num}_raw.txt"
 
-    source_aligned_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/method2_alignedfiles/BO_{book}_al_01_line{num}.txt"
-    target_aligned_file = f"/work/tc046/tc046/s2252632/vecalign/{book}_src/method2_alignedfiles/ENG_{book}_al_01_line{num}.txt"
+    # mofify below filepaths too
+    # the preprocessed/cleaned source language text filepath:
+    sl_file = #ADD: e.g. f"./vecalign/{book}_src/BO_{book}_01"
+    # the preprocessed/cleaned target language text filepath:
+    tl_file = #ADD: e.g. f"./vecalign/{book}_src/ENG_sentencessep_method2/ENG_{book}_01_line{num}"
+    # tl_file = #ADD: e.g. f"./vecalign/{book}_src/ENG_sentences/ENG_{book}_{num}"
+
+    # OUTPUT filepaths:
+    source_aligned_file = #ADD: e.g. f"./vecalign/{book}_src/method2_alignedfiles/BO_{book}_al_01_line{num}.txt"
+    target_aligned_file = #ADD: e.g. f"./vecalign/{book}_src/method2_alignedfiles/ENG_{book}_al_01_line{num}.txt"
 
     ### CODE ###
 

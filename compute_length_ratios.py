@@ -1,8 +1,9 @@
 """
-Compute sentence length ratios between English and Tibetan lines in Latse7 test. Ratios to be used to find appropriate search window for sentence combination elimination method. 
+Compute sentence length ratios between English and Tibetan lines in Latse7 test. Ratios to be used to find appropriate search window for sentence combination elimination method.
+Modify filepaths before running.
 """
-eng_path = "/work/tc046/tc046/s2252632/formatting_repo_clone/txt_to_continuous/latse7_testset/EN_latse7test"
-bo_path = "/work/tc046/tc046/s2252632/formatting_repo_clone/txt_to_continuous/latse7_testset/BO_latse7test"
+eng_path = #ADD: e.g. f"./latse7_testset/EN_latse7test"
+bo_path = #ADD: e.g. f"./latse7_testset/BO_latse7test"
 
 eng_line_count = 0
 bo_line_count = 0
@@ -19,7 +20,7 @@ with open(bo_path, "r") as file:
     for line in file:
         bo_line_count += 1
         bo_char_count += len(line)
-        
+
 bo_avg_perline = bo_char_count/bo_line_count
 eng_avg_perline = eng_char_count/eng_line_count
 
