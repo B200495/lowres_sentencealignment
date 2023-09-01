@@ -68,18 +68,6 @@ for partnum in range(1, total_parts+1):
             my_dict = pickle.load(file)
         return my_dict
 
-    # def normalise_english(eng_sent):
-    #     # Tokenise, remove punct and lower-case an Eng sentence (TL)
-    #     # Tokenize the sentence
-    #     tokens = nltk.word_tokenize(eng_sent)
-
-    #     # Remove punctuation
-    #     tokens = [token for token in tokens if token not in string.punctuation]
-
-    #     # Convert tokens to lowercase
-    #     tokens = [token.lower() for token in tokens]
-    #     return tokens
-
     def is_partial_match(tib_word, tib_sent, threshold=0.8):
         """
         Helper function for use within word_in_dict. Ensures the term is in the Eng transl reference to enforce sensical copy behaviour by NMT model. If 80% (e.g. threshold) of the dictionary value (consecutive characters) is in english sentence (based on characters) then return True = match.
@@ -168,11 +156,6 @@ for partnum in range(1, total_parts+1):
         print("no 'ho' key to remove")
 
     print(f"Merged dict length: {len(merged_dict)}")
-
-    # # add speechmarks to dict as extra match clue
-    # merged_dict['“'] = ['“', '"']
-    # merged_dict['”'] = ['”', '"']
-    # merged_dict['"'] = ['”', '“']
 
     ## Some extra dict cleaning:
 

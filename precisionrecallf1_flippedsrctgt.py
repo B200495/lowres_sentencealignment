@@ -414,10 +414,3 @@ df = pd.DataFrame(results_list)
 
 # Print the dataframe
 print(df)
-
-
-#### Precision - out of auto-alignment bisegments, how many alignments were correct?
-
-#### Recall - out of ref-alignment bisegments, how many did the auto-aligner correctly align?
-
-### No ref-alignments have null/blank indices. Only auto-alignments have null/blank indices.
